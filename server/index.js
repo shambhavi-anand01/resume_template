@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const cors = require("cors");
+const session = require("express-session");
 
 dotenv.config();
 const app = express();
@@ -14,7 +15,16 @@ app.use(cors(
     credentials: true, // Allow credentials (cookies, authorization headers)
   }
 )); // Enable CORS
-
+app.use(session({
+  secret: "yourSecretKey",
+  resave: false,
+  saveUninitialized: true,
+  cookie: {
+    secure: true, // Set to false if using HTTP (local dev)
+    sameSite: "none", // Required for cross-origin cookies
+    httpOnly: true
+  }
+}));
 // Import Routes
 const authRoutes = require("./routes/auth");
 app.use("/auth", authRoutes); // Mount auth routes
