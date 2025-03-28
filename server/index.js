@@ -8,7 +8,7 @@ const app = express();
 app.use(express.json()); // Middleware to parse JSON
 app.use(cors(
   {
-    origin: "http://localhost:5173", // Replace '*' with the frontend's origin
+    origin: ["http://localhost:5173", "https://resume-template-navy.vercel.app"]// Replace '*' with the frontend's origin
     credentials: true, // Allow credentials (cookies, authorization headers)
   }
 )); // Enable CORS
