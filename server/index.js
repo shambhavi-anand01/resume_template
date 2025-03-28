@@ -8,7 +8,9 @@ const app = express();
 app.use(express.json()); // Middleware to parse JSON
 app.use(cors(
   {
-    origin: ["http://localhost:5173", "https://resume-template-navy.vercel.app/", "https://resume-template-shambhavi-anands-projects.vercel.app/", "https://resume-template-git-main-shambhavi-anands-projects.vercel.app/"], // Replace '*' with the frontend's origin
+    origin: ["http://localhost:5173", "https://resume-template-navy.vercel.app", "https://resume-template-shambhavi-anands-projects.vercel.app", "https://resume-template-git-main-shambhavi-anands-projects.vercel.app"],
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true, // Allow credentials (cookies, authorization headers)
   }
 )); // Enable CORS
